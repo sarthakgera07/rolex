@@ -1,0 +1,6 @@
+# Git Ignore
+*.zip
+*.png
+server.ps1
+.DS_Store
+Thumbs.db

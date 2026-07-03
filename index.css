@@ -1,0 +1,885 @@
+/* ==========================================================================
+   Luxury Watch Website - CSS stylesheet
+   ========================================================================== */
+
+/* Design Tokens & Variables */
+:root {
+  --bg-dark: #030a08;
+  --bg-darker: #010403;
+  --primary: #cfa853;       /* Luxury Warm Gold */
+  --primary-hover: #e6c06c;
+  --text-light: #f5f6f6;
+  --text-muted: #8e9c97;
+  --accent-green: #041f16;  /* Deep Emerald Green */
+  --accent-glow: rgba(4, 31, 22, 0.6);
+  --border-gold: rgba(207, 168, 83, 0.25);
+  --border-gold-hover: rgba(207, 168, 83, 0.6);
+  --glass-bg: rgba(3, 10, 8, 0.6);
+  
+  --font-serif: 'Cinzel', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  --header-height: 80px;
+  --transition-smooth: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Reset & Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-darker);
+  color: var(--text-light);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, .brand-logo, .logo {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Preloader Screen */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-darker);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.05);
+}
+
+.loader-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader-content .brand-logo {
+  font-size: 2rem;
+  letter-spacing: 0.3em;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  animation: logo-glow 2s infinite ease-in-out;
+}
+
+.loader-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1.5rem;
+}
+
+.loader-ring svg {
+  transform: rotate(-90deg);
+}
+
+.bg-circle {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.05);
+  stroke-width: 4;
+}
+
+.progress-circle {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 283; /* 2 * PI * r (r=45) */
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 0.1s ease;
+}
+
+.loader-ring .percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.loader-status {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+/* Header / Navigation */
+.luxury-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4%;
+  background: linear-gradient(to bottom, rgba(3, 10, 8, 0.95) 0%, rgba(3, 10, 8, 0.7) 70%, transparent 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition-smooth);
+}
+
+.luxury-header .logo {
+  font-size: 1.5rem;
+  letter-spacing: 0.25em;
+  color: var(--text-light);
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.luxury-header .logo:hover {
+  color: var(--primary);
+  text-shadow: 0 0 10px rgba(207, 168, 83, 0.3);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+  font-weight: 500;
+  position: relative;
+  padding: 5px 0;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--primary);
+  transition: var(--transition-smooth);
+}
+
+.nav-links a:hover {
+  color: var(--text-light);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 0;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--bg-darker);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  box-shadow: 0 0 20px rgba(207, 168, 83, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary);
+  border-color: var(--border-gold);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: var(--bg-darker);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(207, 168, 83, 0.3);
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 0.7rem;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Scroll Animated Hero Section */
+.scroll-container {
+  position: relative;
+  height: 400vh; /* Pinned viewport height to scrub frames */
+  width: 100%;
+}
+
+.sticky-viewport {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#watch-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Radial Ambient Glows behind watch */
+.radial-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.15;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glow-1 {
+  width: 50vw;
+  height: 50vw;
+  background-color: var(--primary);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: glow-pulse-1 8s infinite alternate ease-in-out;
+}
+
+.glow-2 {
+  width: 45vw;
+  height: 45vw;
+  background-color: #0b593f;
+  top: 40%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  animation: glow-pulse-2 10s infinite alternate ease-in-out;
+}
+
+/* Narrative Tracking Overlay */
+.narrative-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none; /* Let scroll events pass through */
+}
+
+.narrative-slide {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%) translateY(30px);
+  width: 32%;
+  max-width: 450px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid var(--primary);
+  padding: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.narrative-slide.active {
+  opacity: 1;
+  pointer-events: auto; /* Allow text links and interactions if any */
+  transform: translateY(-50%) translateY(0);
+}
+
+/* Layout details inside narrative slides */
+.eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.narrative-slide h2 {
+  font-size: 2.2rem;
+  color: var(--text-light);
+  margin-bottom: 1.25rem;
+}
+
+.narrative-slide p {
+  margin-bottom: 1.5rem;
+}
+
+/* Scroll Hint Indicator on Slide 1 */
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  opacity: 0.8;
+  margin-top: 2rem;
+}
+
+.hint-arrow {
+  animation: arrow-bounce 1.5s infinite ease-in-out;
+  font-size: 1rem;
+}
+
+/* Specifications Section */
+.spec-section {
+  padding: 120px 0;
+  background-color: var(--bg-darker);
+  position: relative;
+  z-index: 5;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  margin-bottom: 70px;
+}
+
+.section-eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  color: var(--text-light);
+}
+
+.title-divider {
+  width: 60px;
+  height: 2px;
+  background-color: var(--primary);
+  margin: 20px auto 0;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.spec-card {
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-gold);
+  padding: 40px 30px;
+  transition: var(--transition-smooth);
+}
+
+.spec-card:hover {
+  border-color: var(--border-gold-hover);
+  box-shadow: 0 10px 30px rgba(4, 31, 22, 0.4);
+  transform: translateY(-5px);
+}
+
+.spec-val {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+.spec-val .unit {
+  font-size: 1.1rem;
+  font-family: var(--font-sans);
+  color: var(--text-light);
+  letter-spacing: 0;
+  margin-left: -5px;
+}
+
+.spec-lbl {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-light);
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.spec-card p {
+  font-size: 0.9rem;
+}
+
+/* Key Features Section */
+.features-section {
+  padding: 120px 0;
+  background-color: var(--bg-dark);
+  position: relative;
+  z-index: 5;
+}
+
+.features-split {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+}
+
+.features-text-side {
+  width: 50%;
+}
+
+.feature-item {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 45px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.feature-num {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--primary);
+  opacity: 0.5;
+  margin-top: 3px;
+}
+
+.feature-info h3 {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+
+.features-visual-side {
+  width: 45%;
+}
+
+.image-showcase {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--border-gold);
+  overflow: hidden;
+  padding: 20px;
+  background-color: var(--bg-darker);
+}
+
+.image-showcase img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.image-showcase:hover img {
+  transform: scale(1.05);
+}
+
+.glass-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(207, 168, 83, 0.05) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Dial Customizer Section */
+.customizer-section {
+  padding: 120px 0;
+  background-color: var(--bg-darker);
+  position: relative;
+  z-index: 5;
+}
+
+.customizer-box {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-gold);
+  padding: 60px;
+}
+
+.customizer-visual {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.watch-preview-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--bg-darker);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.watch-preview-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* CSS Dial Overlay Tinting Magic */
+.dial-tint-overlay {
+  position: absolute;
+  /* Centered exactly on the dial of frame_00000.jpg */
+  width: 22%;
+  height: 38.5%;
+  top: 48.7%;
+  left: 49.9%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+  transition: background-color 0.8s ease, opacity 0.8s ease;
+  mix-blend-mode: hue;
+  opacity: 0;
+}
+
+.customizer-info {
+  width: 50%;
+  padding-left: 8%;
+}
+
+.customizer-info h2 {
+  font-size: 2.5rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+.customizer-info p {
+  margin-bottom: 35px;
+}
+
+.dial-options {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.dial-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+  outline: none;
+}
+
+.dial-btn::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--primary);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--transition-smooth);
+}
+
+.dial-btn:hover {
+  transform: scale(1.05);
+}
+
+.dial-btn.active::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.selected-details {
+  margin-bottom: 40px;
+  padding: 15px 20px;
+  border-left: 2px solid var(--primary);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+}
+
+.detail-value {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Luxury Footer */
+.luxury-footer {
+  background-color: var(--bg-darker);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 60px 0;
+  position: relative;
+  z-index: 5;
+  text-align: center;
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.footer-brand {
+  font-size: 1.8rem;
+  letter-spacing: 0.3em;
+  color: var(--primary);
+  margin-bottom: 25px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  padding-top: 30px;
+}
+
+.footer-bottom p {
+  font-size: 0.75rem;
+  color: rgba(142, 156, 151, 0.4);
+}
+
+/* Animations */
+@keyframes logo-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(207, 168, 83, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 25px rgba(207, 168, 83, 0.5);
+  }
+}
+
+@keyframes glow-pulse-1 {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15) rotate(15deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes glow-pulse-2 {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(-20deg);
+    opacity: 0.25;
+  }
+}
+
+@keyframes arrow-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* Media Queries (Responsive Design) */
+@media (max-width: 1024px) {
+  .narrative-slide {
+    width: 45%;
+    left: 5%;
+    padding: 30px;
+  }
+  
+  .narrative-slide h2 {
+    font-size: 1.8rem;
+  }
+  
+  .specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .customizer-box {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 70px;
+  }
+  
+  .luxury-header {
+    padding: 0 5%;
+  }
+  
+  .nav-links {
+    display: none; /* Hide nav links on mobile for premium simplicity */
+  }
+  
+  .narrative-slide {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    top: auto;
+    bottom: 5vh;
+    transform: translateY(0) translateY(30px);
+    border-left: none;
+    border-top: 3px solid var(--primary);
+  }
+  
+  .narrative-slide.active {
+    transform: translateY(0) translateY(0);
+  }
+  
+  .features-split {
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+  
+  .features-text-side, .features-visual-side {
+    width: 100%;
+  }
+  
+  .customizer-box {
+    flex-direction: column;
+    padding: 30px;
+    gap: 45px;
+  }
+  
+  .customizer-visual, .customizer-info {
+    width: 100%;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .narrative-slide h2 {
+    font-size: 1.5rem;
+  }
+  
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .spec-val {
+    font-size: 3rem;
+  }
+  
+  .customizer-box {
+    padding: 20px;
+  }
+}

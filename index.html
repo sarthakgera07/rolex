@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rolex Oyster Perpetual Datejust | Exploded View Experience</title>
+  
+  <!-- Font Imports -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Preloader Screen -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="brand-logo">ROLEX</div>
+      <div class="loader-ring">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="45" class="bg-circle" />
+          <circle cx="50" cy="50" r="45" class="progress-circle" id="loading-progress" />
+        </svg>
+        <span class="percentage" id="loading-text">0%</span>
+      </div>
+      <div class="loader-status">Preloading Horological Components...</div>
+    </div>
+  </div>
+
+  <!-- Smooth Scroll Container -->
+  <div class="scroll-wrapper">
+    
+    <!-- Header/Navigation -->
+    <header class="luxury-header">
+      <div class="logo">ROLEX</div>
+      <nav class="nav-links">
+        <a href="#hero-scroll">Deconstruction</a>
+        <a href="#specifications">Calibre Specs</a>
+        <a href="#features">Features</a>
+        <a href="#customizer">Customizer</a>
+      </nav>
+      <div class="cta-header">
+        <a href="#customizer" class="btn btn-outline btn-sm">Configure</a>
+      </div>
+    </header>
+
+    <!-- Scroll Animated Hero Section -->
+    <section id="hero-scroll" class="scroll-container">
+      <div class="sticky-viewport">
+        <!-- Canvas for Watch Frame Rendering -->
+        <canvas id="watch-canvas"></canvas>
+        
+        <!-- Ambient Glow Backdrops -->
+        <div class="radial-glow glow-1"></div>
+        <div class="radial-glow glow-2"></div>
+
+        <!-- Floating Narration Blocks -->
+        <div class="narrative-track">
+          <!-- Slide 1: Assembled -->
+          <div class="narrative-slide active" id="slide-1" data-frame-start="0" data-frame-end="50">
+            <span class="eyebrow">The Icon</span>
+            <h2>Oyster Perpetual Datejust</h2>
+            <p>A masterpiece of horological engineering. Clean lines, a majestic fluted bezel, and a sunray green dial come together to form the definitive luxury watch.</p>
+            <div class="scroll-hint">
+              <span>Scroll to Deconstruct</span>
+              <div class="hint-arrow">↓</div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Exploded Case & Bezel -->
+          <div class="narrative-slide" id="slide-2" data-frame-start="60" data-frame-end="110">
+            <span class="eyebrow">Deconstructed</span>
+            <h2>Microscopic Precision</h2>
+            <p>Every bezel, glass facet, and movement layer acts as a symphony of individual components. Deconstructed here to reveal the engineering behind the dial.</p>
+          </div>
+
+          <!-- Slide 3: Internal Calibre -->
+          <div class="narrative-slide" id="slide-3" data-frame-start="120" data-frame-end="175">
+            <span class="eyebrow">The Heartbeat</span>
+            <h2>Calibre 3235 Movement</h2>
+            <p>Rolex's self-winding mechanical movement. Fully certified as a Superlative Chronometer, featuring a Chronergy escapement and a 70-hour power reserve.</p>
+          </div>
+
+          <!-- Slide 4: Reassembly / Bracelet -->
+          <div class="narrative-slide" id="slide-4" data-frame-start="185" data-frame-end="239">
+            <span class="eyebrow">The Finish</span>
+            <h2>Forged in Oystersteel</h2>
+            <p>Engineered to withstand extreme environments. Polished to a mirror sheen, the oystersteel bracelet wraps around the wrist with ultimate comfort.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specifications Section -->
+    <section id="specifications" class="spec-section">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="section-eyebrow">Calibre Specs</span>
+          <h2>Superlative Performance</h2>
+          <div class="title-divider"></div>
+        </div>
+        
+        <div class="specs-grid">
+          <div class="spec-card">
+            <div class="spec-val">3235</div>
+            <div class="spec-lbl">Manufacture Rolex Calibre</div>
+            <p>A mechanical movement with self-winding capabilities, entirely developed and manufactured in-house.</p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-val">±2 <span class="unit">sec/day</span></div>
+            <div class="spec-lbl">Superlative Chronometer</div>
+            <p>Precision tested after casing to exceed COSC official standards, ensuring world-class accuracy.</p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-val">70 <span class="unit">hrs</span></div>
+            <div class="spec-lbl">Power Reserve</div>
+            <p>Equipped with a high-capacity barrel and Chronergy escapement, providing weekend-proof longevity.</p>
+          </div>
+          <div class="spec-card">
+            <div class="spec-val">100m <span class="unit">/ 330ft</span></div>
+            <div class="spec-lbl">Water Resistance</div>
+            <p>Protected by the patented Twinlock double waterproofness system screwed securely into the case.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-title">
+          <span class="section-eyebrow">Design Elements</span>
+          <h2>Aesthetic Integrity</h2>
+        </div>
+        
+        <div class="features-split">
+          <div class="features-text-side">
+            <div class="feature-item">
+              <div class="feature-num">01</div>
+              <div class="feature-info">
+                <h3>The Fluted Bezel</h3>
+                <p>Originally engineered to screw the bezel onto the case to ensure water resistance, the fluting has become a signature aesthetic marker unique to Rolex models.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-num">02</div>
+              <div class="feature-info">
+                <h3>Cyclops Magnifier</h3>
+                <p>Named after the one-eyed giant of Greek mythology, the Cyclops lens magnifies the date display by two and a half times for instantaneous reading.</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-num">03</div>
+              <div class="feature-info">
+                <h3>Oystersteel Case</h3>
+                <p>Specially developed by the brand, Oystersteel belongs to the 904L steel family, superalloys most commonly used in high-tech and aerospace industries.</p>
+              </div>
+            </div>
+          </div>
+          <div class="features-visual-side">
+            <div class="image-showcase">
+              <img src="watch_frames_24fps/frame_00000.jpg" alt="Rolex Datejust Fully Assembled" id="showcase-img">
+              <div class="glass-overlay"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dial Customizer Section -->
+    <section id="customizer" class="customizer-section">
+      <div class="container">
+        <div class="customizer-box">
+          <div class="customizer-visual">
+            <div class="watch-preview-container">
+              <!-- Animated overlay for dial coloring -->
+              <div class="dial-tint-overlay" id="dial-tint"></div>
+              <img src="watch_frames_24fps/frame_00000.jpg" alt="Rolex Datejust Dial Preview" id="customizer-preview-img">
+            </div>
+          </div>
+          <div class="customizer-info">
+            <span class="section-eyebrow">Interactive Studio</span>
+            <h2>Configure Your Dial</h2>
+            <p>Customize the iconic sunray brush dial to reflect your personal style. Select from our signature palettes below.</p>
+            
+            <div class="dial-options">
+              <button class="dial-btn active" data-color="emerald" style="background: linear-gradient(135deg, #0b3d2b, #041f16);" data-name="Olive Green"></button>
+              <button class="dial-btn" data-color="blue" style="background: linear-gradient(135deg, #0f2c59, #0b1a30);" data-name="Royal Blue"></button>
+              <button class="dial-btn" data-color="slate" style="background: linear-gradient(135deg, #3d454a, #202426);" data-name="Slate Grey"></button>
+              <button class="dial-btn" data-color="gold" style="background: linear-gradient(135deg, #a67c1e, #6e5010);" data-name="Champagne Gold"></button>
+            </div>
+            
+            <div class="selected-details">
+              <div class="detail-label">Current Configuration:</div>
+              <div class="detail-value" id="selected-dial-name">Olive Green</div>
+            </div>
+            
+            <button class="btn btn-primary btn-block">Inquire About Reference</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="luxury-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">ROLEX</div>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Find a Retailer</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Rolex. All rights reserved. Created as an interactive visual showcase.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript App Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
